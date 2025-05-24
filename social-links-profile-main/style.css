@@ -123,4 +123,9 @@ button{
     color: var(--cl-white);
     font-weight: var(--fw-600);
     padding-block: 1rem;
+    transition: background-color 0.5s, color 0.5s;
+}
+button:hover{
+    background-color: var(--cl-green);
+    color: var(--cl-grey-900);
 }
