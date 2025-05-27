@@ -1,0 +1,170 @@
+/* lexend-deca-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/lexend-deca-v22-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inter-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/inter-v18-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+:root{
+    --cl-primary-darkblue: hsl(233, 47%, 7%);
+    --cl-primary-blue: hsl(244, 38%, 16%);
+    --cl-primary-violet: hsl(277, 64%, 61%);
+    --cl-neutral-white: hsl(0, 0%, 100%);
+    --cl-neutral-transWhite: hsla(0, 0%, 100%, 0.75);
+    --cl-neutral-whiter: hsla(0, 0%, 100%, 0.6);
+    --ff-primary: 'Lexend Deca', Arial, Helvetica, sans-serif;
+    --ff-heading:'Inter', Arial, Helvetica, sans-serif;
+    --fs-primary:15px;
+    --cl-background:var(--cl-primary-darkblue);
+    --cl-card:var(--cl-primary-blue);
+    --cl-heading:var(--cl-neutral-white);
+    --cl-text:var(--cl-neutral-transWhite);
+    --cl-stat:var(--cl-neutral-whiter);
+    --cl-insight:var(--cl-primary-violet);
+}
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--cl-background);
+    font-size: var(--fs-primary);
+    font-family: var(--ff-primary);
+    
+}
+img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    
+    
+}
+.img{
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    
+}
+.img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--cl-insight);
+    mix-blend-mode: multiply;
+    z-index: 1;
+}
+
+h1,
+h2{
+    margin: 0;
+    padding: 0;
+    font-size: 1.725rem;
+    color: var(--cl-heading);
+    font-family: var(--ff-heading);
+}
+h1{
+    margin-block-end: 1.5rem;
+}
+p{
+    margin: 0;
+    color: var(--cl-text);
+    line-height: 1.6;
+    font-family: var(--ff-heading);
+    
+    
+}
+span{
+    color: var(--cl-primary-violet);
+}
+.wrapper{
+     display: flex;
+     justify-content: center;
+      min-height: 100vh;
+      padding-block: 3rem;
+
+}
+.card{
+    background-color: var(--cl-card);
+    max-width: 85%;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    @media (width > 720px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 65rem;
+        
+    }
+}
+.card-text{
+    padding: 2rem 1.5rem;
+}
+.holder{
+    margin-block-start: 3em;
+    
+}
+.cred{
+    margin-block-end: 1.5rem;
+}
+.cred h2{
+    margin-block-end: 0.2rem;
+}
+@media (width >=720px) {
+    h1{
+        font-size: 2.5rem;
+        text-align: left;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    p{
+        text-align: left;
+        font-size: 1rem;
+        
+       
+    }
+    .card-disc{
+        margin-inline-end: 4rem;
+    }
+    .card-text{
+        padding: 3rem;
+        order: 1;
+    }
+    .img{
+        order: 2;
+    }
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+   .holder{
+    display: flex;
+    text-align: start;
+    gap: 4rem;
+   }
+}
