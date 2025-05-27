@@ -18,5 +18,14 @@
         .annual-change a{
             font-size: 1rem;
         }
+        body{
+    background-image: url('images/pattern-background-desktop.svg');
+    background-color: var(--cl-background);
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-family: var(--ff-primery);
+    font-size: 16px;
+    font-weight: var(--fw-500);
+}
         
     }

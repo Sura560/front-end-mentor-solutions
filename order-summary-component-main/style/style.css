@@ -40,7 +40,10 @@
     --cl-heading:var(--cl-dark-blue);
 }
 body{
+    background-image: url('images/pattern-background-mobile.svg');
     background-color: var(--cl-background);
+    background-repeat: no-repeat;
+    background-size: auto, cover;
     font-family: var(--ff-primery);
     font-size: 16px;
     font-weight: var(--fw-500);
