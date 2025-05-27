@@ -1,0 +1,22 @@
+ @media (width > 500px) {
+        .card{
+            max-width: 28.1rem;
+        }
+        .card-heading{
+            font-size: 1.8rem;
+            font-weight: var(--fw-900);
+        }
+        .card-text{
+            font-size: 1.1rem;
+            padding-inline: 3rem;
+        }
+        .card-plan,
+        .card-payment{
+            font-size: 1.1rem;
+            margin-inline: 2.5rem;
+        }
+        .annual-change a{
+            font-size: 1rem;
+        }
+        
+    }
