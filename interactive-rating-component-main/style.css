@@ -132,3 +132,17 @@ img{
 .rate-value p{
      color: var(--cl-orange-500);
 }
+@media (width >= 700px) {
+    .card{
+        padding-inline: 1.5rem;
+        max-width: 25rem;
+    }
+    .card-heading{
+        margin-block: 1.7rem;
+    }
+    .card-rating button{
+        padding: 1rem 1.3rem;
+        
+    }
+
+}
