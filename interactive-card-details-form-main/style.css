@@ -1,0 +1,39 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* 3. Add accessible line-height and improve text rendering */
+body {
+  min-height: 100vh; /* Optional: ensures body takes up full height */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Improve media defaults (images are responsive by default) */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 6. Remove list styles on ul and ol if desired for navigation */
+ul[class], ol[class] {
+  list-style: none;
+}
+:root {
+    --cl-primary: linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+    --cl-primary-red: hsl(0, 100%, 66%);
+    --cl-white: hsl(0, 100%, 100%);
+    --cl-grey-200: hsl(270, 3%, 87%);
+    --cl-grey-400: hsl(212, 12%, 71%);
+    --cl-purple-900: hsl(278, 68%, 11%);
+}
