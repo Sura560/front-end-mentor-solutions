@@ -31,7 +31,7 @@ ul[class], ol[class] {
   list-style: none;
 }
 :root {
-    --cl-primary: linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+    --cl-primary: linear-gradient( hsl(249, 99%, 64%), hsl(278, 94%, 30%));
     --cl-primary-red: hsl(0, 100%, 66%);
     --cl-white: hsl(0, 100%, 100%);
     --cl-grey-200: hsl(270, 3%, 87%);
@@ -113,16 +113,28 @@ form {
     margin-block: 5.25rem;
     display: grid;
     padding-inline: 1.125rem;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 .forms input {
+    border: double 3px transparent; /* Set a transparent border width */
+    background-image: linear-gradient(white, white), linear-gradient(to right, #ccc, #ccc);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    outline: none; /* Removes the default blue/black focus outline */
+    transition: background-image 0.5s ease; 
     width: 100%;
     padding: .75rem;
-    border: 2px solid var(--cl-grey-400);
     border-radius: 5px;
     font-size: 14px;
     font-weight: 500;
     color: var(--cl-purple-900);
+}
+input::placeholder {
+    color: var(--cl-grey-400);
+    font-weight: 500;
+}
+input:focus {
+     background-image: linear-gradient(white, white), var(--cl-primary);
 }
 label{
     display: block;
@@ -152,4 +164,15 @@ label{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+@media (min-width: 700px) {
+    .container {
+        display: grid;
+        grid-template-columns: 30% 1fr;
+        justify-content: space-around;
+    }
+    .card-wrapper {
+        background-image: url("images/bg-main-desktop.png");
+        height: 100vh;
+    }
 }
