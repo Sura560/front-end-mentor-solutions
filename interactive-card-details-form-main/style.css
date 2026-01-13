@@ -56,6 +56,7 @@ body {
     font-size: 15px;
     position: relative;
     display: grid;
+    justify-items: end;
     padding-inline: 1rem;
     width: 100%;
     color: var(--cl-white);
@@ -112,8 +113,8 @@ form {
     margin-block: 5.25rem;
     display: grid;
     padding-inline: 1.125rem;
-    gap: 2rem;
-    max-width: 460px;
+    gap: 1.15rem;
+    max-width: 450px;
 }
 .forms input {
     border: double 3px transparent; /* Set a transparent border width */
@@ -123,7 +124,7 @@ form {
     outline: none; /* Removes the default blue/black focus outline */
     transition: background-image 0.5s ease; 
     width: 100%;
-    padding: .75rem;
+    padding: .5rem;
     border-radius: 5px;
     font-size: 14px;
     font-weight: 500;
@@ -181,18 +182,21 @@ label{
     }
     .cards {
         position: static;
-        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3rem;
     }
     .card-front {
         position: static;
         width: 377px;
         height: 195px;
-        transform: translateX(0);
+        transform: translateX(-2rem);
     }
     .card-back {
         position: static;
         width: 377px;
         height: 195px;
-        transform: translateX(0);
+        transform: translateX(2rem);
     }
 }
