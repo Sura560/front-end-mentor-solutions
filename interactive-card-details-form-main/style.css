@@ -117,7 +117,7 @@ form {
     max-width: 450px;
 }
 .forms input {
-    border: double 3px transparent; /* Set a transparent border width */
+    border: double 2px transparent; /* Set a transparent border width */
     background-image: linear-gradient(white, white), linear-gradient(to right, #ccc, #ccc);
     background-origin: border-box;
     background-clip: padding-box, border-box;
@@ -125,7 +125,7 @@ form {
     transition: background-image 0.5s ease; 
     width: 100%;
     padding: .5rem;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
     color: var(--cl-purple-900);
@@ -153,6 +153,7 @@ label{
 }
 .date {
     display: flex;
+    flex-wrap: wrap;
     gap: .5rem;
 }
 .submit-btn {
@@ -166,7 +167,14 @@ label{
     border-radius: 5px;
     cursor: pointer;
 }
-@media (min-width: 700px) {
+.error-msg {
+    color: var(--cl-primary-red);
+    font-size: 12px;
+    margin-top: .25rem;
+    font-weight: 500;
+    display: block;
+}
+@media (min-width: 750px) {
     .container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -196,7 +204,8 @@ label{
     .card-back {
         position: static;
         width: 377px;
-        height: 195px;
+        height: 200px;
         transform: translateX(2rem);
+        padding-right: 3rem;
     }
 }
