@@ -65,6 +65,7 @@
                  <span class="error-msg"></span>
                 <label for="year"></label>
                 <input type="number" placeholder="YY" id="year">
+                 <span class="error-msg"></span>
               </div>
             </div>
              <div class="form">
@@ -89,6 +90,7 @@
    })
    input.addEventListener("focusout", () => {
     const inputId = input.id;
+    console.log(input.className)
    labels.forEach((lable) => {
     if(lable.htmlFor === inputId){
       input.nextElementSibling.textContent = 'error message';
