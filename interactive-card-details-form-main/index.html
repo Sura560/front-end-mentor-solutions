@@ -62,7 +62,6 @@
               <div class="date">
                 <label for="month"></label>
                 <input type="number" placeholder="MM" id="month">
-                 <span class="error-msg"></span>
                 <label for="year"></label>
                 <input type="number" placeholder="YY" id="year">
                  <span class="error-msg"></span>
@@ -82,27 +81,26 @@
 </body>
 <script>
   const inputs = document.querySelectorAll('input');
-  const errorMsgs = document.querySelectorAll('.error-msg');
   const labels = document.querySelectorAll('label');
   inputs.forEach((input) => {
+    const errorMsg = input.closest('.form').querySelector('.error-msg');
+    const inputId = input.id;
    input.addEventListener("focusin", () => {
     input.style.border = 'double 2px transparent';
+    errorMsg.textContent = '';
    })
    input.addEventListener("focusout", () => {
-    const inputId = input.id;
-    console.log(input.className)
+   
    labels.forEach((lable) => {
     if(lable.htmlFor === inputId){
-      input.nextElementSibling.textContent = 'error message';
        if (input.value === '') {
         input.style.border = '2px solid var(--cl-primary-red)';
-        input.nextElementSibling.textContent = "Can't be blank";
+        errorMsg.textContent = "Can't be blank";
        } else {
         input.style.border = 'double 2px transparent';
-        input.nextElementSibling.textContent = '';
+        errorMsg.textContent = '';
        }
     }
-   
    })
      
    })
