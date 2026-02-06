@@ -152,8 +152,12 @@ label{
     gap: 1rem;
 }
 .date {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: .5rem;
+}
+.date label {
+    display: none;
 }
 .submit-btn {
     margin-top: 1rem;

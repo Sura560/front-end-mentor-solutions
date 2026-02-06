@@ -28,7 +28,7 @@
               0000 0000 0000 0000
             </div>
             <div class="card-name-date">
-              <div class="card-name">
+              <div class="cardholder-name">
                 Jane Appleseed
               </div>
               <div class="card-date">
@@ -82,29 +82,83 @@
 <script>
   const inputs = document.querySelectorAll('input');
   const labels = document.querySelectorAll('label');
-  inputs.forEach((input) => {
-    const errorMsg = input.closest('.form').querySelector('.error-msg');
-    const inputId = input.id;
-   input.addEventListener("focusin", () => {
-    input.style.border = 'double 2px transparent';
-    errorMsg.textContent = '';
-   })
-   input.addEventListener("focusout", () => {
+  // inputs.forEach((input) => {
+  //   const errorMsg = input.closest('.form').querySelector('.error-msg');
+  //   const inputId = input.id;
+  //  input.addEventListener("focusin", () => {
+  //   input.style.border = 'double 2px transparent';
+  //   errorMsg.textContent = '';
+  //  })
+  //  input.addEventListener("focusout", () => {
    
-   labels.forEach((lable) => {
-    if(lable.htmlFor === inputId){
-       if (input.value === '') {
-        input.style.border = '2px solid var(--cl-primary-red)';
-        errorMsg.textContent = "Can't be blank";
-       } else {
-        input.style.border = 'double 2px transparent';
-        errorMsg.textContent = '';
-       }
-    }
-   })
+  //  labels.forEach((lable) => {
+  //   if(lable.htmlFor === inputId){
+  //      if (input.value === '' ) {
+  //       input.style.border = '2px solid var(--cl-primary-red)';
+  //       errorMsg.textContent = "Can't be blank";
+  //      } else {
+  //       input.style.border = 'double 2px transparent';
+  //       errorMsg.textContent = '';
+  //      }
+  //   }
+  //  })
      
-   })
+  //  })
+  // });
+  function showError(input, message) {
+  input.style.border = '2px solid var(--cl-primary-red)';
+  const form = input.closest('.form');
+  form.querySelector('.error-msg').textContent = message;
+}
+
+function clearError(input) {
+  input.style.border = 'double 2px transparent';
+  const form = input.closest('.form');
+  form.querySelector('.error-msg').textContent = '';
+}
+
+  function validateInput(input) {
+    if (input.value.trim() === '') {
+      showError(input, "Can't be blank");
+      return false
+    }
+    clearError(input);
+    return true;
+  }
+  function validateDate() {
+  const monthInput = document.getElementById('month');
+  const yearInput = document.getElementById('year');
+
+  let valid = true;
+
+  if (monthInput.value.trim() === '') {
+    showError(monthInput, "Can't be blank");
+    valid = false;
+  } else {
+    clearError(monthInput);
+  }
+
+  if (yearInput.value.trim() === '') {
+    showError(yearInput, "Can't be blank");
+    valid = false;
+  } else {
+    clearError(yearInput);
+  }
+
+  return valid;
+}
+
+inputs.forEach((input) => {
+  input.addEventListener('focusin', () => {
+    clearError(input);
   });
-  console.log('hello');
+
+  if (input.id === 'month' || input.id === 'year') {
+    input.addEventListener('focusout', validateDate);
+  } else {
+    input.addEventListener('focusout', () => validateInput(input));
+  }
+});
+
 </script>
 </html>
