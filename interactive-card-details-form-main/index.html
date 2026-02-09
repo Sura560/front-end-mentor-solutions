@@ -82,29 +82,7 @@
 <script>
   const inputs = document.querySelectorAll('input');
   const labels = document.querySelectorAll('label');
-  // inputs.forEach((input) => {
-  //   const errorMsg = input.closest('.form').querySelector('.error-msg');
-  //   const inputId = input.id;
-  //  input.addEventListener("focusin", () => {
-  //   input.style.border = 'double 2px transparent';
-  //   errorMsg.textContent = '';
-  //  })
-  //  input.addEventListener("focusout", () => {
-   
-  //  labels.forEach((lable) => {
-  //   if(lable.htmlFor === inputId){
-  //      if (input.value === '' ) {
-  //       input.style.border = '2px solid var(--cl-primary-red)';
-  //       errorMsg.textContent = "Can't be blank";
-  //      } else {
-  //       input.style.border = 'double 2px transparent';
-  //       errorMsg.textContent = '';
-  //      }
-  //   }
-  //  })
-     
-  //  })
-  // });
+
   function showError(input, message) {
   input.style.border = '2px solid var(--cl-primary-red)';
   const form = input.closest('.form');
@@ -131,19 +109,29 @@ function clearError(input) {
 
   let valid = true;
 
-  if (monthInput.value.trim() === '') {
+  if (monthInput.value.trim() === '' && yearInput.value.trim() === '') {
     showError(monthInput, "Can't be blank");
-    valid = false;
-  } else {
-    clearError(monthInput);
-  }
-
-  if (yearInput.value.trim() === '') {
     showError(yearInput, "Can't be blank");
     valid = false;
+  } else if( yearInput.value.trim() === '' && monthInput.value.trim() !== '') {
+    showError(yearInput, "Can't be blank");
+  } else if(monthInput.value.trim() === '' && yearInput.value.trim() !== '') {
+    showError(monthInput, "Can't be blank");
+
   } else {
-    clearError(yearInput);
+      if ((monthInput.value < 1 || monthInput.value > 12) || (yearInput.value < 0 || yearInput.value > 99)) {
+    showError(monthInput, "Wrong format");
+    showError(yearInput, "Wrong format");
+      valid = false;
+    } else {
+      clearError(monthInput);
+      clearError(yearInput);
+    }
+    
   }
+
+  
+  
 
   return valid;
 }
