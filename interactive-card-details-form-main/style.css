@@ -42,6 +42,38 @@ body {
    font-size: 18px;
    font-family: 'Space Grotesk', sans-serif;
 }
+#thank-you {
+    display: none;
+    text-align: center;
+    justify-content: center;
+   
+}
+#thank-you img {
+    margin: 0 auto;
+    margin-block-end: 2rem;
+}
+#thank-you h1 {
+    font-size: 1.5rem;
+    color: var(--cl-purple-900);
+    margin-block-end: .5rem;
+}
+#thank-you p {
+    color: var(--cl-grey-400);
+    font-weight: 500;
+}
+#thank-you button {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--cl-purple-900);
+    color: var(--cl-white);
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-inline: 8rem;
+}
+
 .card-wrapper {
   background-image: url("images/bg-main-mobile.png");
   background-repeat: no-repeat;
@@ -115,6 +147,10 @@ form {
     padding-inline: 1.125rem;
     gap: 1.15rem;
     max-width: 450px;
+}
+.forms {
+    display: grid;
+    justify-content: center;
 }
 .forms input {
     border: double 2px transparent; /* Set a transparent border width */
