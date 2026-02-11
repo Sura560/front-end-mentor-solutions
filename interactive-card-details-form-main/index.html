@@ -32,7 +32,8 @@
                 Jane Appleseed
               </div>
               <div class="card-date">
-                00/00
+               <span class="month"> 00/</span>
+                <span class="year">00</span>
               </div>
             </div>
           </div>
@@ -53,7 +54,7 @@
           </div>
           <div class="form">
             <label for="card-number">CARD NUMBER</label>
-            <input type="number" id="card-number" placeholder="e.g. 1234 5678 9123 0000" required>
+            <input type="text" id="card-number" inputmode="numeric" placeholder="e.g. 1234 5678 9123 0000" required>
             <span class="error-msg"></span>
           </div>
           <div class="form-container">
@@ -82,6 +83,17 @@
 <script>
   const inputs = document.querySelectorAll('input');
   const labels = document.querySelectorAll('label');
+  const cardNumber = document.querySelector('.card-number');
+  const cardName = document.querySelector('.cardholder-name');
+  const cardMonth = document.querySelector('.month');
+  const cardYear = document.querySelector('.year');
+  const cardCvc = document.querySelector('.cvc');
+  const inputCardNumber = document.getElementById('card-number');
+  const inputCardName = document.getElementById('cardholder-name');
+  const inputCardMonth = document.getElementById('month');
+  const inputCardYear = document.getElementById('year');
+  const inputCardCvc = document.getElementById('cvc');
+
 
   function showError(input, message) {
   input.style.border = '2px solid var(--cl-primary-red)';
@@ -129,18 +141,32 @@ function clearError(input) {
     }
     
   }
-
-  
-  
-
   return valid;
 }
+
+function writeCardDetails(input) {
+  if (input.id === 'card-number') {
+    cardNumber.textContent = input.value || '0000 0000 0000 0000';
+  } else if (input.id === 'cardholder-name') {
+    cardName.textContent = input.value || 'Jane Appleseed';
+  } else if (input.id === 'month') {
+    cardMonth.textContent = input.value ? `${input.value}/` : '00/';
+  } else if (input.id === 'year') {
+    cardYear.textContent = input.value || '00';
+  } else if (input.id === 'cvc') {
+    cardCvc.textContent = input.value || '000';
+  }
+}
+
 
 inputs.forEach((input) => {
   input.addEventListener('focusin', () => {
     clearError(input);
   });
-
+input.addEventListener('input', (e) => {
+  writeCardDetails(input);
+});
+  
   if (input.id === 'month' || input.id === 'year') {
     input.addEventListener('focusout', validateDate);
   } else {
@@ -148,5 +174,43 @@ inputs.forEach((input) => {
   }
 });
 
+function validateName(input) {
+  const namePattern = /^[a-zA-Z ]+$/;
+  if(!namePattern.test(input.value) && input.value.trim() !== '') {
+    showError(input, "Wrong format");
+    return false;
+    
+  }
+    clearError(input);
+    return true;
+}
+function formatCardNumber(value) {
+  return value
+    .replace(/\D/g, '')    
+    .slice(0, 16)    
+    .replace(/(.{4})/g, '$1 ') 
+    .trim();                   
+}
+function validateCardNumber(input) {
+  const cardNumberPattern = /^\d{4} \d{4} \d{4} \d{4}$/;
+  if (!cardNumberPattern.test(input.value) && input.value.trim() !== '') {
+    showError(input, "Wrong format");
+   
+  }
+  
+}
+
+inputCardName.addEventListener('focusout', () =>{
+  validateName(inputCardName);
+}
+); 
+inputCardNumber.addEventListener('input', () => {
+  inputCardNumber.value = formatCardNumber(inputCardNumber.value);
+  writeCardDetails(inputCardNumber);
+});
+
+inputCardNumber.addEventListener('focusout', () => {
+  validateCardNumber(inputCardNumber);
+});
 </script>
 </html>
