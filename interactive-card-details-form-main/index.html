@@ -250,11 +250,11 @@ inputCvc.addEventListener("blur", () => {
         showError(inputNumber, "Wrong format or blank");
         valid = false;
       }
-      if(!validateMonth(inputMonth.value)) {
+      if(inputMonth.value.trim() === "" || !validateMonth(inputMonth.value)) {
         showError(inputMonth, "Wrong month");
         valid = false;
       }
-      if(!validateYear(inputYear.value)) {
+      if(inputYear.value.trim() === "" ||   !validateYear(inputYear.value)) {
         showError(inputYear, "Wrong year");
         valid = false;
       }
