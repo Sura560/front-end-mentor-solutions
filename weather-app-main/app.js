@@ -11,10 +11,11 @@ const humidityEl = document.getElementById("humidity");
 const windSpeedEl = document.getElementById("wind-speed");
 const precipitationEl = document.getElementById("precipitation");
 const dailyForecastEl = document.querySelector(".daily-forecast");
-const hourlyForecastEl = document.querySelector(".hourly-forecast");
+const hourlyForecastEl = document.querySelector(".hourly");
+const dayListEl = document.querySelector(".day-list");
+
 
 const weatherData = {};
-
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   let search = inputEL.value.trim();
@@ -30,7 +31,6 @@ form.addEventListener("submit", async (e) => {
   dailyForecastUi(weatherData.days);
   hourlyForecastUi()
 });
-
 async function fetchWeather(location) {
   try {
     const response = await fetch(
@@ -75,7 +75,6 @@ async function getCountry(location) {
   const lon = data.results[0].longitude;
   return { city, country, lat, lon };
 }
-
 function getWeatherData(data, locationData) {
   weatherData.location = data.resolvedAddress;
   weatherData.temperature = data.currentConditions.temp;
@@ -120,7 +119,7 @@ function currentWeatherUi(data) {
   locationEL.textContent = `${data.country.city}, ${data.country.country}`;
   dateEL.textContent = data.date;
   tempEL.textContent = `${data.temperature}°`;
-  iconEl.src = `assets/images/icon-${data.icon}.webp`;
+  iconEl.src = `assets/images/icon-${vcToMeteoIcon(data.icon)}.webp`;
   feelsLikeEl.textContent = `${data.feelsLike}°`;
   humidityEl.textContent = `${data.humidity}%`;
   windSpeedEl.textContent = `${data.windSpeed} km/h`;
@@ -128,6 +127,7 @@ function currentWeatherUi(data) {
 }
 
 function dailyForecastUi(data) {
+  dailyForecastEl.innerHTML = '';
   for (let i = 0; i < 7; i++) {
     const dateStr = data[i].datetime;
     // Use T00:00:00 to avoid timezone shifts
@@ -139,7 +139,7 @@ function dailyForecastUi(data) {
     const dayForcastEl = document.createElement("div");
     dayForcastEl.innerHTML = `<div class="daily-forecast-item"> 
                              <h3 class="day"> ${day} </h3>
-                            <img src = "assets/images/icon-${data[i].icon}.webp" alt="weather icon">
+                            <img src = "assets/images/icon-${vcToMeteoIcon(data[i].icon)}.webp" alt="weather icon">
                             <div class="forecast-info"><p class="forecast-tempmax"> ${data[i].tempmax}° </p>
                             <p class="forecast-tempmin"> ${data[i].tempmin}° </p>
                             </div>
@@ -149,6 +149,36 @@ function dailyForecastUi(data) {
 }
 
 function hourlyForecastUi() {
-    const data = weatherData.days[0].hours
-    console.log(data)
+  hourlyForecastEl.innerHTML = '';
+  const data = weatherData.days;
+  data.slice(0, 7).map((day, index) => {
+    const date = new Date(day.datetime + "T00:00:00");
+    const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+    const button = document.createElement("button");
+    button.textContent = dayName;
+    dayListEl.append(button);
+    button.addEventListener("click", () => {
+      hourlyForecastEl.innerHTML = "";
+      for(let i = 0; i < 24; i++) {
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="hour"><img src="assets/images/icon-${vcToMeteoIcon(data[index].hours[i].icon)}.webp" alt ="hourly icon"> <p class="current-hour"> ${data[index].hours[i].datetime} </p></div> <p> ${data[index].hours[i].temp}</p>`;
+        hourlyForecastEl.append(div);
+      }
+    })
+    
+  }); 
 }
+
+
+window.addEventListener("DOMContentLoaded", async () => {
+  const locationData = await getCountry("addis ababa");
+  const weather = await fetchWeather("addis ababa");
+
+  if (!locationData || !weather) return;
+
+  const data = getWeatherData(weather, locationData);
+
+  currentWeatherUi(data);
+  dailyForecastUi(weatherData.days);
+  hourlyForecastUi();
+});

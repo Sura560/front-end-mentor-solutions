@@ -1,0 +1,240 @@
+:root {
+    --clr-neutral-900: hsl(243, 96%, 9%);
+    --clr-neutral-800: hsl(243, 27%, 20%);
+    --clr-neutral-700: hsl(243, 23%, 24%);
+    --clr-neutral-600: hsl(243, 23%, 30%);
+    --clr-neutral-300: hsl(240, 6%, 70%);
+    --clr-neutral-200: hsl(250, 6%, 84%);
+    --clr-neutral-0: hsl(0, 0%, 100%);
+
+    --clr-orange-500: hsl(28, 100%, 52%);
+
+    --clr-blue-500: hsl(233, 67%, 56%);
+    --clr-blue-700: hsl(248, 70%, 36%);
+    --fs: 18px;
+    --ff-primary: 'DM Sans', arial;
+    --ff-secondary:"Bricolage Grotesque", sans-serif;
+
+
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--ff-primary);
+  font-size: var(--fs);
+  background-color: var(--clr-neutral-900);
+  color: var(--clr-neutral-0);
+  display: grid;
+  margin-inline: 1rem;
+  justify-content: center;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 2rem;
+    margin-inline: 1rem;
+}
+
+.units-btn {
+    display: flex;
+    justify-content: space-evenly;
+    gap: .5rem;
+    padding: .5rem 1rem;
+    font-size: .85rem;
+    background-color: var(--clr-neutral-800);
+    color: var(--clr-neutral-0);
+    border: none;
+    border-radius: 5px;
+}
+
+.search {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 1rem;
+}
+.title {
+    color: var(--clr-neutral-0);
+    font-family: var(--ff-secondary);
+    margin-block-end: 2rem;
+    font-size: 3.3rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+form {
+    display: grid;
+    gap: .5rem;
+    margin-block-end: 2rem;
+}
+.search-input,
+.search-submit {
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    display: block;
+    width: 100%;
+}
+
+.search-input {
+    background-color: var(--clr-neutral-800);
+    color: var(--clr-neutral-300);
+    padding-inline: 3rem;
+    background-image: url('assets/images/icon-search.svg');
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
+    background-size: 18px;
+}
+.search-input::placeholder {
+    color: var(--clr-neutral-300);
+}
+.search-input:focus {
+    background-color: var(--clr-neutral-800);
+}
+.search-submit {
+    background-color: var(--clr-blue-500);
+    color: var(--clr-neutral-0);
+}
+
+.temp {
+    background-image: url('assets/images/bg-today-small.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: grid;
+    justify-content: center;
+    
+    align-items: center;
+
+    padding: 3rem 1.5rem ;
+    max-width: 700px;
+
+    border-radius: 20px;
+    overflow: hidden;
+    margin-inline: 1rem;
+    margin-block-end: 2rem;
+}
+.date {
+  color: var(--clr-neutral-200);
+}
+.location, .date {text-align: center;}
+
+.current-temp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.temperature {
+    font-size: 5rem;
+}
+.current-temp img {
+    height: 120px;
+}
+
+.temp-info {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 1rem;
+  margin-block-end: 2rem;
+  margin-inline: 1rem;
+}
+.cur-temp {
+  background-color: var(--clr-neutral-700);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.cur-temp h3 {
+  font-size: 1rem;
+  color: var(--clr-neutral-200);
+  margin-block-end: 1rem;
+  font-weight: 400;
+}
+.cur-temp p {
+  font-size: 2rem;
+}
+
+.daily {
+  margin-inline: 1rem;
+
+}
+.daily h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.daily-forecast {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: space-between;
+  
+}
+.daily-forecast div {
+  padding: .3rem;
+  border-radius: 10px;
+  background-color: var(--clr-neutral-700);
+  
+}
+.daily-forecast h3 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--clr-neutral-200);
+}
+.forecast-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  color: var(--clr-neutral-200);
+}
