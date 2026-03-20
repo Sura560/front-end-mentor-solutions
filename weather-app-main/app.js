@@ -151,17 +151,18 @@ function dailyForecastUi(data) {
 function hourlyForecastUi() {
   hourlyForecastEl.innerHTML = '';
   const data = weatherData.days;
-  data.slice(0, 7).map((day, index) => {
+  data.slice(0, 7).forEach((day, index) => {
     const date = new Date(day.datetime + "T00:00:00");
     const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-    const button = document.createElement("button");
-    button.textContent = dayName;
-    dayListEl.append(button);
-    button.addEventListener("click", () => {
+    const liEL = document.createElement("li");
+    liEL.textContent = dayName;
+    dayListEl.append(liEL);
+    liEL.addEventListener("click", () => {
+      document.querySelector('.popover-content').togglePopover()
       hourlyForecastEl.innerHTML = "";
       for(let i = 0; i < 24; i++) {
         const div = document.createElement('div');
-        div.innerHTML = `<div class="hour"><img src="assets/images/icon-${vcToMeteoIcon(data[index].hours[i].icon)}.webp" alt ="hourly icon"> <p class="current-hour"> ${data[index].hours[i].datetime} </p></div> <p> ${data[index].hours[i].temp}</p>`;
+        div.innerHTML = `<div class="hour"><img src="assets/images/icon-${vcToMeteoIcon(data[index].hours[i].icon)}.webp" alt ="hourly icon"> <p class="current-hour"> ${data[index].hours[i].datetime} </p></div> <p> ${data[index].hours[i].temp}°</p>`;
         hourlyForecastEl.append(div);
       }
     })

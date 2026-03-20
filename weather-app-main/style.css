@@ -177,7 +177,7 @@ form {
     align-items: center;
 }
 .temperature {
-    font-size: 5rem;
+    font-size: 4.5rem;
 }
 .current-temp img {
     height: 120px;
@@ -207,6 +207,7 @@ form {
 
 .daily {
   margin-inline: 1rem;
+  margin-block-end: 2rem;
 
 }
 .daily h2 {
@@ -237,4 +238,82 @@ form {
   justify-content: space-between;
   font-size: .8rem;
   color: var(--clr-neutral-200);
+}
+.hourly-forecast {
+  background-color: red;
+  border-radius: 10px;
+  padding-inline: 1rem;
+}
+.hourly-wrapper {
+  display: flex;
+  position: relative;
+ 
+  padding-block: 1rem;
+  justify-content: space-between;
+}
+.hourly-wrapper h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.hourly-wrapper button {
+  anchor-name: --my-button;
+  background-color: var(--clr-neutral-600);
+  border: none;
+  color: var(--clr-neutral-200);
+  border-radius: 10px;
+}
+.popover-content {
+  position: absolute;
+  position-area: bottom span-left;
+  border: none;
+  background-color: yellow;
+}
+.popover-content ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style-type: none;
+}
+.popover-content li {
+  background-color: red;
+  list-style-type: none;
+  width: 100%;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.hourly {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  grid-template-columns: 1fr;
+}
+.hourly-forecast {
+
+}
+.hourly div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  background-color: var(--clr-neutral-700);
+  border-radius: 10px;
+
+}
+.hour {
+  display: flex;
+  /* gap: 1rem; */
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+.hour img {
+  height: 3rem;
+}
+@media (width >= 800px) {
+  .all-sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

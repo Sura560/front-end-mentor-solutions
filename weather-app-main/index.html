@@ -55,7 +55,9 @@
     </section>
 
 
-    <div class="container">
+    <div class="all-sections">
+        <div class="right-section">
+         <div class="container">
         <div class="temp">
             <div class="location-date">
                 <h2 class="location"></h2>
@@ -91,14 +93,19 @@
             <!-- Insert daily forecast for the next 7 days here -->
         </div>
     </section>
-    <secion class="hourly-forecast">
-        <h2>Hourly Forecast</h2>
-        <button id="popover-btn" popoverTarget="popover-content">Select Day</button>
-        <div id="popover-content" class="popover-content" popover>
-            <!-- Insert hourly forecast for the selected day here -->
-            <ul class="day-list">
-            </ul>
+    </div>
+    <div class="left-secion">
+        <secion class="hourly-forecast">
+        <div class="hourly-wrapper">
+            <h2>Hourly Forecast</h2>
+            <button id="popover-btn" popoverTarget="popover-content">Select Day</button>
+            <div id="popover-content" class="popover-content" popover>
+                <!-- Insert hourly forecast for the selected day here -->
+                <ul class="day-list">
+                </ul>
+            </div>
         </div>
+
         <div class="hourly-forcaster">
             <!-- Insert hourly forecast for the selected day here -->
             <ul class="hourly">
@@ -106,50 +113,54 @@
             </ul>
         </div>
     </section>
+    </div>
+    </div>
 
 
+        <p style="display: none;">
 
-        Units
+            Units
 
-        Switch to Imperial/Metric
+            Switch to Imperial/Metric
 
-        Temperature
+            Temperature
 
-        Celsius (°C)
-        Fahrenheit (°F)
+            Celsius (°C)
+            Fahrenheit (°F)
 
-        Wind Speed
+            Wind Speed
 
-        km/h
-        mph
+            km/h
+            mph
 
-        Precipitation
+            Precipitation
 
-        Millimeters (mm)
-        Inches (in)
+            Millimeters (mm)
+            Inches (in)
 
-        How's the sky looking today?
+            How's the sky looking today?
 
-        Search for a city, e.g., New York
-        Search
+            Search for a city, e.g., New York
+            Search
 
-        Feels like
-        <!-- Insert temperature here -->
+            Feels like
+            <!-- Insert temperature here -->
 
-        Humidity
-        <!-- Insert humidity here -->
+            Humidity
+            <!-- Insert humidity here -->
 
-        Wind
-        <!-- Insert wind here -->
+            Wind
+            <!-- Insert wind here -->
 
-        Precipitation
-        <!-- Insert precipitation here -->
+            Precipitation
+            <!-- Insert precipitation here -->
 
-        Daily forecast
-        <!-- Insert daily forecast for the next 7 days here -->
+            Daily forecast
+            <!-- Insert daily forecast for the next 7 days here -->
 
-        Hourly forecast
-        Insert hourly forecast for the selected day here
+            Hourly forecast
+            Insert hourly forecast for the selected day here
+        </p>
 
         <script src="app.js">
             const form = document.querySelector('form')

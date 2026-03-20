@@ -1,0 +1,162 @@
+:root {
+    --clr-text: rgb(58, 63, 75);
+    --clr-btn: rgb(43, 125, 247);
+    --clr-card: rgb(255, 255, 255);
+    --clr-checkbox: rgb(108, 192, 112);
+    --clr-delete: rgb(227, 100, 90);
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+html {
+    padding: 0;
+    margin: 0;
+}
+svg,img {
+    max-width: 100%;
+    display: block;
+}
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+}
+h1 {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-text);
+    background-color: rgb(195, 216, 224);
+}
+.container {
+    border-radius: .5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-height: 30rem;
+    width: 400px;
+    border: 2px solid rgb(167, 198, 238);
+    overflow: hidden;
+    position: relative;
+    background-color: var(--clr-card);
+    display: flex;
+    flex-direction: column;
+
+}
+.container h1 {
+    text-align: center;
+    color: var(--clr-card);
+    background-color: var(--clr-text);
+    padding: 1rem 1rem;
+    margin-block-end: 1rem;
+}
+.search {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    margin-inline: 1rem;
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-block-end: 1rem;
+}
+.input-box {
+    padding: .75rem;
+    border: none;
+    
+}
+.submit-btn {
+    background-color: var(--clr-btn);
+    color: var(--clr-card);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+.filter {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-block-end: 1rem;
+}
+/* Base style for all filter buttons */
+.filter button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  position: relative; /* needed for ::after */
+  cursor: pointer;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  color: rgb(58, 63, 75);
+}
+
+/* The underline element */
+.filter button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0; /* start hidden */
+  height: 2px;
+  background-color: rgb(43, 125, 247); /* primary color */
+  transition: width 0.3s ease;
+}
+
+/* Hover effect */
+.filter button:hover::after {
+  width: 100%;
+}
+
+/* Active effect */
+.filter button.active::after {
+  width: 100%;
+}
+.task-list {
+    margin-block-end: 2rem;
+    margin-inline: 1rem;
+    display: grid;
+    gap: .25rem;
+}
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    
+}
+input[type="checkbox"] {
+    accent-color: green;
+}
+.right {
+    display: flex;
+    gap: 1rem;
+}
+.delete-btn {
+    background-color: red;
+}
+.todo-item button {
+    /* background-color: var(--clr-card); */
+    padding: .5rem;
+    border: none;
+    border-radius: 8px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 1rem;
+    margin-block: 1rem;
+    margin-top: auto;
+    top: 0;
+}
+.clear-completed {
+    padding: .25rem;
+    border-radius: 8px;
+}
+.line-through {
+    text-decoration: line-through;
+}
