@@ -4,6 +4,19 @@ const inputEL = document.querySelector('#input-box')
 const filterEl = document.querySelector('.filter')
 const clearEl = document.querySelector('.clear-completed')
 let todos = [];
+//save the tasks in local storage
+function saveToLocalStorage() {
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
+//get the tasks from local storage
+function getFromLocalStorage() {
+    const data = localStorage.getItem('todos') 
+    if(data) {
+        todos = JSON.parse(data)
+        renderTask()
+    }
+}
+getFromLocalStorage()
 //factory to create the task object 
 function createTask(txt) {
     return {
@@ -18,6 +31,7 @@ function addTask(txt) {
     const newTodo = createTask(txt);
     todos.push(newTodo);
     renderTask()
+    saveToLocalStorage()
 
 }
 //function to delete task
@@ -26,21 +40,25 @@ function deleteTask(id) {
         return todo.id !== id
     })
     renderTask()
+    saveToLocalStorage()
 }
 //function to clear all tasks
 function clearAllTasks() {
-    todos = []
+    todos = todos.filter(todo => !todo.completed)
     renderTask()
+    saveToLocalStorage()
 }
 //function to for toggle or checkmark
 function checkTask(id) {
     todos = todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo)
     renderTask()
+    saveToLocalStorage()
 }
 //fucntion to edit task
 function editTask(id, newtxt) {
     todos = todos.map(todo => todo.id === id ? {...todo, task: newtxt} : todo)
     renderTask()
+    saveToLocalStorage()
 }
 //function to filter tasks
 function filterTasks(type) {
@@ -48,6 +66,12 @@ function filterTasks(type) {
     if(type === 'completed') return todos.filter(todo => todo.completed)
     
     return todos;
+}
+//function tassk counter
+function taskCounter() {
+    const counterEl = document.querySelector('.task-counter')
+    const activeTasks = todos.filter(todo => !todo.completed).length
+    counterEl.textContent = `${activeTasks} task${activeTasks !== 1 ? 's' : ''} left` || 'No tasks left'
 }
 //fucntion to render tasks
 function renderTask(filter = 'all') {
@@ -94,14 +118,25 @@ function renderTask(filter = 'all') {
         liEl.appendChild(right)
         todoList.appendChild(liEl)
     })
+    taskCounter()
 }
 
-addEl.addEventListener('click' ,()=> {
+addEl.addEventListener('click' ,(e)=> {
+    if(e.key === 'enter') {
+
+    }
     const task = inputEL.value
     if(!task.trim()) return
     addTask(task)
     inputEL.value = ''
 
+})
+
+inputEL.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+        e.preventDefault()
+        addEl.click()
+    }
 })
 filterEl.querySelectorAll('button').forEach(filter =>{
     filter.addEventListener('click' , () => {
@@ -110,8 +145,7 @@ filterEl.querySelectorAll('button').forEach(filter =>{
 
         filter.classList.add('active');
         renderTask(data)
-        
-    })
+        })     
     
 
 })
