@@ -3,7 +3,9 @@ const addEl = document.querySelector('.submit-btn')
 const inputEL = document.querySelector('#input-box')
 const filterEl = document.querySelector('.filter')
 const clearEl = document.querySelector('.clear-completed')
+const todoList = document.querySelector('.task-list')
 let todos = [];
+let filterData = 'all'
 //save the tasks in local storage
 function saveToLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos))
@@ -30,7 +32,7 @@ function createTask(txt) {
 function addTask(txt) {
     const newTodo = createTask(txt);
     todos.push(newTodo);
-    renderTask()
+    renderTask(filterData)
     saveToLocalStorage()
 
 }
@@ -39,25 +41,25 @@ function deleteTask(id) {
     todos = todos.filter(todo => {
         return todo.id !== id
     })
-    renderTask()
+    renderTask(filterData)
     saveToLocalStorage()
 }
 //function to clear all tasks
 function clearAllTasks() {
     todos = todos.filter(todo => !todo.completed)
-    renderTask()
+    renderTask(filterData)
     saveToLocalStorage()
 }
 //function to for toggle or checkmark
 function checkTask(id) {
     todos = todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo)
-    renderTask()
+    renderTask(filterData)
     saveToLocalStorage()
 }
 //fucntion to edit task
 function editTask(id, newtxt) {
     todos = todos.map(todo => todo.id === id ? {...todo, task: newtxt} : todo)
-    renderTask()
+    renderTask(filterData)
     saveToLocalStorage()
 }
 //function to filter tasks
@@ -71,13 +73,21 @@ function filterTasks(type) {
 function taskCounter() {
     const counterEl = document.querySelector('.task-counter')
     const activeTasks = todos.filter(todo => !todo.completed).length
-    counterEl.textContent = `${activeTasks} task${activeTasks !== 1 ? 's' : ''} left` || 'No tasks left'
+    if(activeTasks !== 0) {
+         counterEl.textContent = `${activeTasks} task${activeTasks !== 1 ? 's' : ''} left`  
+    }
+     counterEl.textContent = 'There are no tasks'
+   
 }
 //fucntion to render tasks
-function renderTask(filter = 'all') {
-    const todoList = document.querySelector('.task-list')
+function renderTask( filterData) {
     todoList.innerHTML = ''
-    const filterd = filterTasks(filter)
+    const filterd = filterTasks(filterData)
+    if(filterd.length === 0) {
+        todoList.innerHTML = `<p style = "text-align:center;">There are no tasks at the moment </p>`
+        taskCounter()
+        return
+    }
     filterd.forEach(todo => {
         const liEl = document.createElement('li')
         liEl.classList.add('todo-item')
@@ -89,7 +99,7 @@ function renderTask(filter = 'all') {
         checkMark.classList.add('ckeck-mark')
         checkMark.type = 'checkbox';
         checkMark.checked = todo.completed;
-        checkMark.addEventListener('click', ()=> checkTask(todo.id))
+        checkMark.addEventListener('change', ()=> checkTask(todo.id))
 
         const span = document.createElement('span')
         span.textContent = todo.task
@@ -121,10 +131,7 @@ function renderTask(filter = 'all') {
     taskCounter()
 }
 
-addEl.addEventListener('click' ,(e)=> {
-    if(e.key === 'enter') {
-
-    }
+addEl.addEventListener('click' ,()=> {
     const task = inputEL.value
     if(!task.trim()) return
     addTask(task)
@@ -140,11 +147,11 @@ inputEL.addEventListener('keydown', (e) => {
 })
 filterEl.querySelectorAll('button').forEach(filter =>{
     filter.addEventListener('click' , () => {
-        const data = filter.dataset.filter
+        filterData = filter.dataset.filter
          filterEl.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
 
         filter.classList.add('active');
-        renderTask(data)
+        renderTask(filterData)
         })     
     
 
