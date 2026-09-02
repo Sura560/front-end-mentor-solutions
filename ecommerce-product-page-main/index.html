@@ -5,16 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
   
   <title>Frontend Mentor | E-commerce product page</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 0.6875rem; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+ 
+ 
 </head>
 <body>
+  <div class="container">
+    <header>
+    <nav class="nav-bar">
+      <div class="left-side">
+        <h1 class="logo">
+          <a href="#">sneakers</a>
+        </h1>
+        <ul class="nav-link">
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Woman</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="personal">
+        <div class="cart">
+          <img src="images/icon-cart.svg" alt="the cart icon">
+        </div>
+        <div class="profile">
+          <img src="images/image-avatar.png" alt="prfile picture" width="42px" height="42px">
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="gallery">
+      <div class="current-img">
+
+      </div>
+      <div class="img-sections">
+        <div class="sec">
+
+        </div>
+        <div class="sec">
+          
+        </div>
+        <div class="sec">
+          
+        </div>
+        <div class="sec">
+          
+        </div>
+      </div>
+    </section>
+    <section class="product-info">
+      <div class="sub-heading">Sneaker Company</div>
+      <h1 class="product"> Fall Limited Edition sneakers</h1>
+      <p class="product-disc">
+        These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.
+      </p>
+      <div class="pricing">
+        <div class="price">$125.00 <span class="discount">50%</span></div>
+        <div class="sub-price">$250.00</div>
+      </div>
+
+      <div class="payment">
+        <div>
+          <button class="minus"></button>
+          <div class="current-num"></div>
+          <button class="plus"></button>
+        </div>
+        <button class="add-to-cart">Add to cart</button>
+      </div>
+
+    </section>
+  </main>
+  </div>
 
   Collections
   Men

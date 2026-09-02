@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Kumbah Sans';
+    src: url('assets/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf');
+    font-weight: 400 700;
+}
+:root {
+
+}
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+ul li {
+    list-style-type: none;
+}
+body {
+    font-family: 'Kumbah Sans';
+}
+
+.container {
+    width: min(100% - 4rem, 1100px);
+    margin-inline: auto;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left-side{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+.personal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+li {
+    padding-block: 3rem;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
