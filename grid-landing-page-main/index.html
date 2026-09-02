@@ -13,15 +13,26 @@
 </head>
 <body>
 <header>
-  <nav>
+  <nav class="nav">
     <div class="nav-title">Bridge Collective</div>
     <div class="nav-menu">
-      <button class="menu-btn">
+      <button class="hamburger-open">
         <img src="assets/images/icon-menu.svg" alt="icon-menu">
       </button>
+      <button class="hamburger-close">
+        <img src="assets/images/icon-close.svg" alt="close button">
+      </button>
+      <ul class="menu">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Our Work</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#">Annual Report</a></li>
+          <li><a href="#">Donate</a></li>
+        </ul>
     </div>
   </nav>
 </header>
+<div class="layover"></div>
 <main>
   <article class="hero">
     <h1 class="hero-title">A classroom for every child.</h1>
@@ -99,16 +110,37 @@
 <p class="footer-copy"> © 2026 Bridge Collective</p>
 <p class="footer-address">Registered charity 12345678</p>
 </footer>
-  <!-- Footer -->
- 
   
+<script>
+   const hamburgerOpen = document.querySelector('.hamburger-open')
+   const hamburgerClose = document.querySelector('.hamburger-close')
 
-  <!-- Menu panel — hidden until the hamburger is activated -->
-  <!-- About
-  Our Work
-  Partners
-  Annual Report
-  Donate -->
+//   function showMenu() {
+//     // layover.style.display = 'block'
+//     // menu.style.display = 'flex'
+//     // nav.style.backgroundColor = 'hsl(228, 100%, 60%)'
+//     // hamburgerOpen.style.display = 'none'
+//     // hamburgerClose.style.display = 'block'
+//     document.body.classList.add('menu-open')
+    
+//   }
+
+//   function closeMenu() {
+//     // layover.style.display = 'none'
+//     // menu.style.display = 'none'
+//     // nav.style.backgroundColor = 'hsl(228, 99%, 58%)'
+//     // hamburgerOpen.style.display = 'block'
+//     // hamburgerClose.style.display = 'none'
+//     document.body.classList.remove('menu-open')
+//   }
+
+hamburgerOpen.addEventListener('click', showMenu)
+hamburgerClose.addEventListener('click', showMenu)
+
+function showMenu() {
+  document.body.classList.toggle('menu-open')
+}
+</script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
     /*color*/
     --color-text: hsl(224, 100%, 95%);
     --blue-400: hsl(220, 100%, 64%);
-    --blue-600: hsl(228, 100%, 60%);
+    --color-nav: hsl(228, 100%, 60%);
     --color-background: hsl(228, 99%, 58%);
     --black: hsl(0, 0%, 0%);
     /*font-family*/
@@ -43,22 +43,66 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
+
 nav {
+    position: fixed;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem var(--space-ex);
+    z-index: 30;
     
+}
+button {
+    border: none;
+    background:transparent;
+    cursor: pointer;
 }
 .nav-title {
     font-weight: 700;
+}
+.menu{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 77px;
+    background-color: var(--color-nav);
+    height: 100vh;
+    z-index: 999;
+    min-width: 27%;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-inline: var(--space-ex);
+    list-style: none;
+    font-size: var(--text-large);
+    font-weight: 500;
+    gap: var(--space-md);
+}
+.hamburger-close {
+    display: none;
+}
+.layover {
+    position: fixed;
+    inset: 0;
+    background-color: hsl(0, 0%, 0%);
+    opacity: .25;
+    z-index: 10;
+    display: none;
+}
+ul li a {
+    text-decoration: none;
+    color: var(--color-text);
 }
 main {
     /* height: calc(100vh - 9.625rem); 9.625 is the whole space nav and footer take */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     padding-inline: var(--space-ex);
-   
+    margin-block-start: 77px;
 }
 
 .hero {
@@ -89,6 +133,11 @@ main {
     justify-content: space-between;
     padding: var(--space-lg) 0 var(--space-lg) var(--space-lg);
     font-size: var(--text-small);
+    cursor: pointer;
+}
+.stat:hover {
+    background-color: var(--color-nav);
+    transition: ease-in-out .3s;
 }
 .stat-data {
     display: flex;
@@ -109,6 +158,24 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem var(--space-ex);
+}
+body.menu-open .menu {
+    display: flex;
+}
+
+body.menu-open .layover {
+    display: block;
+}
+
+body.menu-open .hamburger-open {
+    display: none;
+}
+
+body.menu-open .hamburger-close {
+    display: block;
+}
+body.menu-open .nav {
+    background-color: var(--color-nav);
 }
 /*borders*/
 .hero {
@@ -139,6 +206,7 @@ footer {
         display: grid;
         grid-template-columns: 1fr;
     }
+   
     .stat {
         padding: var(--space-lg) 0 var(--space-lg) 0;
     }
@@ -157,6 +225,12 @@ footer {
     
 }
 @media (max-width: 600px) {
+    .menu {
+        left: 0;
+        right: 0;
+        align-items: center;
+        height: 45%;
+    }
     main {
         padding-inline: 0;
     }
@@ -166,6 +240,7 @@ footer {
     .hero {
         padding-inline: var(--space-lg);
     }
+
     .stat:nth-child(4),
     .stat:nth-child(3),
     .stat:nth-child(2),
