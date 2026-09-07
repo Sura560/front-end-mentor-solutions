@@ -18,71 +18,89 @@
     <nav class="nav-bar">
       <div class="left-side">
         <h1 class="logo">
-          <a href="#">sneakers</a>
+          <a href="#"><img src="images/logo.svg" alt="the website logo"></a>
         </h1>
-        <ul class="nav-link">
-          <li><a href="#">Collections</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Woman</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+        <div class="nav-link">
+          <button class="menu"><img src="images/icon-menu.svg" alt="toggle menu icon"></button>
+          <ul class="links">
+            <li><button class="close"><img src="images/icon-close.svg" alt=""></button></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Woman</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
+        </div>
       </div>
       <div class="personal">
         <div class="cart">
-          <img src="images/icon-cart.svg" alt="the cart icon">
+          <img src="images/icon-cart.svg" alt="the cart icon" width="22px" height="20px">
         </div>
         <div class="profile">
-          <img src="images/image-avatar.png" alt="prfile picture" width="42px" height="42px">
+          <img src="images/image-avatar.png" alt="prfile picture" width="24px" height="24px">
         </div>
       </div>
     </nav>
   </header>
   <main>
+    <div class="overlay"></div>
     <section class="gallery">
       <div class="current-img">
-
+        <div class="img-change-btn">
+        <button class="next-img">
+          <img src="images/icon-previous.svg" alt="next button" width="13px" height="16px">
+        </button>
+        <button class="previous-img">
+          <img src="images/icon-next.svg" alt="previous button" width="13px" height="16px">
+        </button>
+      </div>
+        <img src="images/image-product-1.jpg" alt="white and brown sneakers with orange background" class="current">
+        
       </div>
       <div class="img-sections">
         <div class="sec">
-
+          <img src="images/image-product-1-thumbnail.jpg" alt="">
         </div>
         <div class="sec">
+          <img src="images/image-product-2-thumbnail.jpg" alt="">
           
         </div>
         <div class="sec">
-          
+          <img src="images/image-product-3-thumbnail.jpg" alt="">
         </div>
         <div class="sec">
-          
+          <img src="images/image-product-4-thumbnail.jpg" alt="">
         </div>
       </div>
     </section>
     <section class="product-info">
       <div class="sub-heading">Sneaker Company</div>
-      <h1 class="product"> Fall Limited Edition sneakers</h1>
+      <h1 class="product-heading"> Fall Limited Edition sneakers</h1>
       <p class="product-disc">
         These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.
       </p>
       <div class="pricing">
-        <div class="price">$125.00 <span class="discount">50%</span></div>
+        <div class="price"><span class="current-price">$125.00</span> <span class="discount">50%</span></div>
         <div class="sub-price">$250.00</div>
       </div>
 
-      <div class="payment">
-        <div>
-          <button class="minus"></button>
-          <div class="current-num"></div>
-          <button class="plus"></button>
+      <div class="payments">
+        <div class="payment">
+          <button class="minus"><img src="images/icon-minus.svg" alt="add to cart" width="12px" height="4px"></button>
+          <div class="current-num">0</div>
+          <button class="plus"><img src="images/icon-plus.svg" alt="subtract from cart" width="12px" height="12px"></button>
         </div>
-        <button class="add-to-cart">Add to cart</button>
+        <button class="add-to-cart"><span src="images/icon-cart.svg" class="cart-icon" alt="a cart logo"></span><span>Add to cart</span></button>
+        
       </div>
 
     </section>
   </main>
-  </div>
 
-  Collections
+  </div>
+    
+
+  <!-- Collections
   Men
   Women
   About
@@ -101,10 +119,18 @@
 
   0
   Add to cart
-  
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
+   -->
+  <script>
+    const menu = document.querySelector('.menu')
+    const links = document.querySelector('.links')
+    const closeMenu = document.querySelector('.close')
+    const overlay = document.querySelector('.overlay')
+    function hambergMenu() {
+      links.classList.toggle('activeMenu')
+      overlay.classList.toggle('activeMenu')
+    }
+    menu.addEventListener('click' ,hambergMenu)
+    closeMenu.addEventListener('click', hambergMenu)
+  </script>
 </body>
 </html>
